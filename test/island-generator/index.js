@@ -122,7 +122,7 @@ generateIsland(10, 10)
 btn.addEventListener('click',  () => {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    generateIsland(7, 7)
+    generateIsland(10, 10)
 })
 
 
