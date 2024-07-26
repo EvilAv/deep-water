@@ -6,7 +6,7 @@ const btn = document.querySelector('button');
 const ctx = canvas.getContext('2d');
 console.log('message')
 
-// looksa liek we need to store ccordinates also
+// looks like we need to store coordinates also
 const getMockMap = (size, tileSize) => {
     const arr = [];
     let cnt = 0;
