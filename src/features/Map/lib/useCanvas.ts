@@ -7,7 +7,7 @@ export const useCanvas = (ref: React.RefObject<HTMLCanvasElement>, map: Tile[][]
         if (ref.current){
             const ctx = ref.current.getContext('2d');
             if (ctx){
-                drawMap(ctx, map);
+                // drawMap(ctx, map);
             }
         }
     }, [ref, map]);
