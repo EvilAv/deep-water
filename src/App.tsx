@@ -3,7 +3,7 @@ import { FC } from "react";
 import { Map } from "./features/map";
 import { getMockMap } from "./features/map-generator";
 // TODO: replace with redux
-const generateMap = () => getMockMap(5, 80);
+const generateMap = () => getMockMap(10, 80);
 
 const App: FC = () => {
     // TODO: replace with redux
