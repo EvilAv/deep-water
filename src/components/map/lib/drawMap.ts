@@ -1,5 +1,5 @@
 import { Point } from "../../../features/map-control";
-import { Tile } from "../../../features/map-generator/tile";
+import { Tile } from "../../../features/map-generator";
 
 export const drawMap = (
     ctx: CanvasRenderingContext2D,

@@ -11,6 +11,7 @@ type mapState = {
 const initialState: mapState = {
     globalMap: null,
     mapSize: 0,
+    // here will be island graph and megatiles or maybe graph should be in different slice?
 }
 
 export const mapSlice = createSlice({
@@ -29,5 +30,6 @@ export const mapSlice = createSlice({
 export const { setMapSize, generateMap } = mapSlice.actions;
 
 export const selectMap = (state: RootState) => state.map.globalMap;
+export const selectMapSize = (state: RootState) => state.map.mapSize;
 
 export default mapSlice.reducer;
