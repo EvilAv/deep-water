@@ -3,7 +3,7 @@ import { FC } from "react";
 import { MAP_HEIGHT, MAP_WIDTH } from "./const";
 import { useRequestFrame } from "./lib/useRequestFrame";
 import { useDispatch } from "react-redux";
-import { startScroll, endScroll, scroll } from "../map-control/mapControlSlice";
+import { startScroll, scroll, endScroll } from "../../features/map-control/mapControlSlice";
 
 import './style.css'
 

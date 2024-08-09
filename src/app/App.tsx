@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FC } from "react";
-import { Map } from "../features/map";
+import { Map } from "../components/map";
 import { useDispatch } from "react-redux";
 import { setMapSize, setTileSize, generateMap } from "../features/map-generator/mapSlice";
 import { resetControls } from "../features/map-control/mapControlSlice";

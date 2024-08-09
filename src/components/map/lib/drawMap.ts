@@ -1,5 +1,7 @@
-import { Point } from "../../map-control";
-import { Tile } from "../../map-generator/tile";
+import { Point } from "../../../features/map-control";
+import { Tile } from "../../../features/map-generator/tile";
+
+
 export const drawMap = (ctx: CanvasRenderingContext2D, map: Tile[][], point: Point) => {
     for (const line of map){
         for (const tile of line){

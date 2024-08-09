@@ -1,5 +1,6 @@
 import { TileType } from "./types";
 
+// TODO: find out that i cant put classes in redux, so need to be refactored
 export class Tile{
     type:TileType
     x: number;
