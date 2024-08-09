@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { FC } from "react";
 import { Map } from "../features/map";
-import { getMockMap } from "../features/map-generator";
-// TODO: replace with redux
-const generateMap = () => getMockMap(10, 80);
+import { useDispatch } from "react-redux";
+import { setMapSize, setTileSize, generateMap } from "../features/map-generator/mapSlice";
+import { resetControls } from "../features/map-control/mapControlSlice";
 
 const App: FC = () => {
-    // TODO: replace with redux
-    const [map, setMap] = useState(generateMap());
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setMapSize(7));
+        dispatch(setTileSize(80));
+        dispatch(generateMap())
+    }, []);
+
     return (
         <>
-            <Map map={map} />
+            <Map />
             <div>
                 <button
                     onClick={() => {
-                        setMap(generateMap())
+                        dispatch(generateMap());
+                        dispatch(resetControls())
                     }}
                 >
                     refresh

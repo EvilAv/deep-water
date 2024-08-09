@@ -1,13 +1,12 @@
 import { useEffect, useRef } from "react";
 import { MAP_HEIGHT, MAP_WIDTH } from "../const";
 import { drawMap } from "./drawMap";
-import { Tile } from "../../tile";
 import { store } from "../../../app/store";
 import { selectCurrentPoint } from "../../map-control/mapControlSlice";
+import { selectMap } from "../../map-generator/mapSlice";
 
 export const useRequestFrame = (
     ref: React.RefObject<HTMLCanvasElement>,
-    map: Tile[][],
 ) => {
     const requestRef = useRef<number>();
     const ctxRef = useRef<CanvasRenderingContext2D>();
@@ -19,7 +18,10 @@ export const useRequestFrame = (
             // cause it returns completely new point (immutability, you know) with new ref, we cant use it from the outer scope
             // looks like also need to refactor, but now has no idea
             const currentPoint = selectCurrentPoint(store.getState());
-            drawMap(ctx, map, currentPoint);
+            const map = selectMap(store.getState());
+            if (map){
+                drawMap(ctx, map, currentPoint);
+            }
         }
         // to save current frame id, so we can cancel the proper one
         requestRef.current = requestAnimationFrame(animate);
@@ -40,5 +42,5 @@ export const useRequestFrame = (
                 cancelAnimationFrame(requestRef.current);
             }
         };
-    }, [ref, map]);
+    }, [ref]);
 };

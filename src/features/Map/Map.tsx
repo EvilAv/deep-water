@@ -1,20 +1,18 @@
 import React, { useRef } from "react";
 import { FC } from "react";
 import { MAP_HEIGHT, MAP_WIDTH } from "./const";
-import { Tile } from "../tile";
 import { useRequestFrame } from "./lib/useRequestFrame";
 import { useDispatch } from "react-redux";
 import { startScroll, endScroll, scroll } from "../map-control/mapControlSlice";
 
 import './style.css'
 
-// TODO: replace with redux map props
-export const Map: FC<{ map: Tile[][] }> = ({ map }) => {
+export const Map: FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const dispatch = useDispatch();
 
-    useRequestFrame(canvasRef, map);
+    useRequestFrame(canvasRef);
 
     const handleMouseDown = (event: React.MouseEvent) => {
         dispatch(startScroll({ x: event.clientX, y: event.clientY }));

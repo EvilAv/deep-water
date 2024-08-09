@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { Point } from "./camera";
 import { RootState } from "../../app/store";
 
-type mapState = {
+type mapControlState = {
     isPressed: boolean;
     pressedPoint: Point;
     currentPoint: Point;
@@ -12,7 +12,7 @@ type mapState = {
     // centerPoint: Point;
 };
 
-const initialState: mapState = {
+const initialState: mapControlState = {
     isPressed: false,
     pressedPoint: { x: 0, y: 0 },
     previousPoint: { x: 0, y: 0 },
@@ -45,9 +45,7 @@ export const mapControlSlice = createSlice({
             state.isPressed = false;
             state.previousPoint = state.currentPoint;
         },
-        resetControls: (state) => {
-            state = initialState;
-        }
+        resetControls: () => initialState,
     },
 });
 

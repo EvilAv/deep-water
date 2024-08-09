@@ -1,1 +1,1 @@
-export { getMockMap } from "./getMockMap";
+export { getMockMap } from "./lib/getMockMap";

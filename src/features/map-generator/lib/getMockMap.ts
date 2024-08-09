@@ -1,5 +1,5 @@
-import { getRandomInt } from "../../utils";
-import { Tile } from "../tile/Tile";
+import { getRandomInt } from "../../../utils";
+import { Tile } from "../tile";
 
 export const getMockMap = (size: number, tileSize: number) => {
     const arr: Tile[][] = [];
