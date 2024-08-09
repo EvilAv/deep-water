@@ -3,10 +3,10 @@ import { FC } from "react";
 import { MAP_HEIGHT, MAP_WIDTH } from "./const";
 import { Tile } from "../tile";
 import { useRequestFrame } from "./lib/useRequestFrame";
-import { Point } from "./camera/types";
-import { useSelector, useDispatch } from "react-redux";
-import { startScroll, endScroll, scroll } from "./mapSlice";
-import { selectCurrentPoint } from "./mapSlice";
+import { useDispatch } from "react-redux";
+import { startScroll, endScroll, scroll } from "../map-control/mapControlSlice";
+
+import './style.css'
 
 // TODO: replace with redux map props
 export const Map: FC<{ map: Tile[][] }> = ({ map }) => {

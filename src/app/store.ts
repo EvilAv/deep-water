@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import mapSlice from "../features/map/mapSlice";
+import mapControlSlice from "../features/map-control/mapControlSlice";
+
 
 export const store = configureStore({
     reducer: {
-        map: mapSlice,
+        mapControl: mapControlSlice,
     },
 });
 

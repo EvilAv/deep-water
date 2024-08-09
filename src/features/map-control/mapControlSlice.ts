@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Point } from "./camera/types";
-import { act } from "react";
+import { Point } from "./camera";
 import { RootState } from "../../app/store";
 
 type mapState = {
@@ -20,9 +19,8 @@ const initialState: mapState = {
     currentPoint: { x: 0, y: 0 },
 };
 
-export const mapSlice = createSlice({
-    // maybe should rename to "map-control"
-    name: "map",
+export const mapControlSlice = createSlice({
+    name: "map-control",
     initialState,
     reducers: {
         startScroll: (state, action: PayloadAction<Point>) => {
@@ -30,6 +28,8 @@ export const mapSlice = createSlice({
             state.pressedPoint = action.payload;
         },
         scroll: (state, action: PayloadAction<Point>) => {
+            // it foul all logs with scroll action >_<
+            // the internet says that it is not such a good idea
             if (state.isPressed) {
                 const mousePoint = action.payload;
                 const deltaX = mousePoint.x - state.pressedPoint.x;
@@ -45,11 +45,14 @@ export const mapSlice = createSlice({
             state.isPressed = false;
             state.previousPoint = state.currentPoint;
         },
+        resetControls: (state) => {
+            state = initialState;
+        }
     },
 });
 
-export const { startScroll, endScroll, scroll } = mapSlice.actions;
+export const { startScroll, endScroll, scroll, resetControls } = mapControlSlice.actions;
 
-export const selectCurrentPoint = (state: RootState) => state.map.currentPoint;
+export const selectCurrentPoint = (state: RootState) => state.mapControl.currentPoint;
 
-export default mapSlice.reducer;
+export default mapControlSlice.reducer;

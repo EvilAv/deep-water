@@ -2,9 +2,8 @@ import { useEffect, useRef } from "react";
 import { MAP_HEIGHT, MAP_WIDTH } from "../const";
 import { drawMap } from "./drawMap";
 import { Tile } from "../../tile";
-import { Point } from "../camera/types";
-import { selectCurrentPoint } from "../mapSlice";
 import { store } from "../../../app/store";
+import { selectCurrentPoint } from "../../map-control/mapControlSlice";
 
 export const useRequestFrame = (
     ref: React.RefObject<HTMLCanvasElement>,
