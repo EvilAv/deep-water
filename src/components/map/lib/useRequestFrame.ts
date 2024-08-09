@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { MAP_HEIGHT, MAP_WIDTH } from "../const";
 import { drawMap } from "./drawMap";
 import { store } from "../../../app/store";
-import { selectCurrentPoint } from "../../../features/map-control/mapControlSlice";
+import { selectCurrentPoint, selectCurrentTileSize } from "../../../features/map-control/mapControlSlice";
 import { selectMap } from "../../../features/map-generator/mapSlice";
 
 export const useRequestFrame = (
@@ -15,12 +15,15 @@ export const useRequestFrame = (
         const ctx = ctxRef.current;
         if (ctx) {
             ctx.clearRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
+
             // cause it returns completely new point (immutability, you know) with new ref, we cant use it from the outer scope
             // looks like also need to refactor, but now has no idea
             const currentPoint = selectCurrentPoint(store.getState());
+            const tileSize = selectCurrentTileSize(store.getState());
             const map = selectMap(store.getState());
+            
             if (map){
-                drawMap(ctx, map, currentPoint);
+                drawMap(ctx, map, currentPoint, tileSize);
             }
         }
         // to save current frame id, so we can cancel the proper one

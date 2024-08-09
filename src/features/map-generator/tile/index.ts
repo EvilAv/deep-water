@@ -1,1 +1,3 @@
-export { Tile } from "./Tile";
+export { createTile } from "./createTile";
+
+export type { Tile } from "./types";
