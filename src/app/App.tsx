@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FC } from "react";
-import { Map } from "./features/map";
-import { getMockMap } from "./features/map-generator";
+import { Map } from "../features/map";
+import { getMockMap } from "../features/map-generator";
 // TODO: replace with redux
 const generateMap = () => getMockMap(10, 80);
 
