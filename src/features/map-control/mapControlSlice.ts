@@ -3,6 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { Point } from "./camera";
 import { RootState } from "../../app/store";
 import { NEGATIVE_BORDER_GAP, TILE_SIZE } from "./const";
+import { MAP_SIZE } from "../map-generator";
 
 type mapControlState = {
     isPressed: boolean;
@@ -12,8 +13,6 @@ type mapControlState = {
     // will be used for zoom
     // centerPoint: Point;
     zoomCoefficient: number;
-    // maybe should join map and map-control in one slice
-    // looks like visibleScreen cant be split in two independent slice
     mapSize: number;
 };
 
@@ -23,7 +22,7 @@ const initialState: mapControlState = {
     previousPoint: { x: 0, y: 0 },
     currentPoint: { x: 0, y: 0 },
     zoomCoefficient: 1,
-    mapSize: 0,
+    mapSize: MAP_SIZE,
 };
 
 export const mapControlSlice = createSlice({
@@ -70,13 +69,10 @@ export const mapControlSlice = createSlice({
             state.currentPoint = tempPoint;
         },
         resetControls: () => initialState,
-        setMapSize: (state, action: PayloadAction<number>) => {
-            state.mapSize = action.payload
-        }
     },
 });
 
-export const { startScroll, endScroll, scroll, resetControls, setMapSize } = mapControlSlice.actions;
+export const { startScroll, endScroll, scroll, resetControls } = mapControlSlice.actions;
 
 export const selectCurrentPoint = (state: RootState) => state.mapControl.currentPoint;
 export const selectCurrentTileSize = (state: RootState) => state.mapControl.zoomCoefficient * TILE_SIZE;
