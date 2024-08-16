@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { MAP_HEIGHT, MAP_WIDTH } from "../const";
 import { drawMap } from "./drawMap";
 import { store } from "../../../app/store";
-import { selectCurrentPoint, selectCurrentTileSize } from "../../../features/map-control/mapControlSlice";
+import { selectCurrentPoint, selectCurrentTileSize, selectVisibleMap } from "../../../features/map-control/mapControlSlice";
 import { selectMap } from "../../../features/map-generator/mapSlice";
 
 export const useRequestFrame = (
@@ -21,9 +21,10 @@ export const useRequestFrame = (
             const currentPoint = selectCurrentPoint(store.getState());
             const tileSize = selectCurrentTileSize(store.getState());
             const map = selectMap(store.getState());
+            const visibleMap = selectVisibleMap(store.getState());
             
             if (map){
-                drawMap(ctx, map, currentPoint, tileSize);
+                drawMap(ctx, map, visibleMap, currentPoint, tileSize);
             }
         }
         // to save current frame id, so we can cancel the proper one

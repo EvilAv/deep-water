@@ -1,1 +1,1 @@
-export type { Point } from "./camera";
+export type { Point, ShadowTile } from "./camera";

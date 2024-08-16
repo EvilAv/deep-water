@@ -1,15 +1,17 @@
 import { Point } from "../../../features/map-control";
+import { ShadowTile } from "../../../features/map-control";
 import { Tile } from "../../../features/map-generator";
 
 export const drawMap = (
     ctx: CanvasRenderingContext2D,
     map: Tile[][],
+    visibleMap: ShadowTile[][],
     point: Point,
     tileSize: number
 ) => {
-    for (const line of map) {
-        for (const tile of line) {
-            drawTile(ctx, tile, point, tileSize);
+    for (const line of visibleMap) {
+        for (const {x, y} of line) {
+            drawTile(ctx, map[y][x], point, tileSize);
         }
     }
     strokeGrid(ctx, tileSize, map.length, point);

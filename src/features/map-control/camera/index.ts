@@ -1,1 +1,2 @@
-export type { Point } from "./types";
+export type { Point, ShadowTile } from "./types";
+export { getVisibleMap } from "./getVisibleMap";
